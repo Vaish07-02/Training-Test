@@ -1,0 +1,29 @@
+#To find disarium number
+def is_disarium(num):
+    sum_digits = 0
+    for idx, digit in enumerate(str(num), start=1):
+        sum_digits += int(digit) ** idx
+    return sum_digits == num
+
+# Function to find first n Disarium numbers
+def first_n_disarium(n):
+    disarium_numbers = []
+    num = 0
+    while len(disarium_numbers) < n:
+        if is_disarium(num):
+            disarium_numbers.append(num)
+        num += 1
+    return disarium_numbers
+def disarium_between(start, end):
+    result = []
+    for num in range(start, end + 1):
+        if is_disarium(num):
+            result.append(num)
+    return result
+
+n = int(input("Enter how many Disarium numbers you want: "))
+print("First", n, "Disarium numbers are:", first_n_disarium(n))
+
+start = int(input("Enter starting number: "))
+end = int(input("Enter ending number: "))
+print("Disarium numbers between", start, "and", end, "are:", disarium_between(start, end))
